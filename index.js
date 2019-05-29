@@ -101,7 +101,7 @@ const init = async() => {
     //await db.run(`insert into vagas(categoria, titulo, descricao) values(2, '${titulo}', '${descricao}')`)
 }
 init()
-
+// teste bit sourcetree
 app.listen(3000, (err) => {
     if(err){
         console.log('Não foi possivel iniciar o servidor do Jobify.')
