@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+const path = require('path')
+
 const sqlite = require('sqlite')
 const dbConnection = sqlite.open(path.resolve(__dirname, 'banco.sqlite'), { Promise })
 
@@ -8,7 +10,14 @@ const bodyParser = require('body-parser')
 
 const port = process.env.PORT || 3000
 
-const path = require('path')
+app.use('/admin', (req, res, next) => {
+    if(req.hostname === 'localhost'){
+        next()
+    }else{
+        res.send('Não permitido!')
+    }
+
+})
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
